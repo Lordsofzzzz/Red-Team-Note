@@ -1,0 +1,177 @@
+/* Custom theme for Red Team Notes */
+
+:root {
+  --sl-color-accent-low: #400c0c;
+  --sl-color-accent: #bf2c2c;
+  --sl-color-accent-high: #ff5252;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f6f6f7;
+  --sl-color-gray-2: #eeeff2;
+  --sl-color-gray-3: #d8dee4;
+  --sl-color-gray-4: #bdc4cf;
+  --sl-color-gray-5: #8690a2;
+  --sl-color-gray-6: #596376;
+  --sl-color-gray-7: #252a35;
+  --sl-color-black: #151823;
+  
+  /* Dark mode colors */
+  --sl-color-accent-low-dark: #400c0c;
+  --sl-color-accent-dark: #bf2c2c;
+  --sl-color-accent-high-dark: #ff5252;
+  
+  /* Custom font size adjustments */
+  --sl-text-sm: 0.925rem;
+  --sl-text-base: 1.025rem;
+  --sl-text-lg: 1.25rem;
+  --sl-text-xl: 1.5rem;
+  --sl-text-2xl: 1.875rem;
+  --sl-text-3xl: 2.25rem;
+  --sl-text-4xl: 2.75rem;
+  
+  /* Code block styling */
+  --sl-code-border-radius: 6px;
+  --sl-code-padding-block: 0.75rem;
+  --sl-code-padding-inline: 1rem;
+}
+
+/* Side navigation enhancements */
+.sidebar nav details summary {
+  font-weight: 600;
+}
+
+.sidebar nav a {
+  transition: all 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  background-color: color-mix(in srgb, var(--sl-color-accent-low) 15%, transparent);
+  transform: translateX(4px);
+}
+
+.sidebar nav a.active {
+  color: var(--sl-color-accent-high);
+  background-color: color-mix(in srgb, var(--sl-color-accent-low) 30%, transparent);
+  border-left: 3px solid var(--sl-color-accent);
+  padding-left: calc(var(--sl-nav-pad-x) - 3px);
+}
+
+/* Card styling enhancements */
+.card {
+  border: 1px solid var(--sl-color-gray-3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--sl-color-accent);
+}
+
+.card .title {
+  color: var(--sl-color-accent);
+}
+
+/* Button styling */
+:is(.hero-actions, .action-button) a {
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+:is(.hero-actions, .action-button) a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+:is(.hero-actions, .action-button) a[data-variant="primary"] {
+  background: linear-gradient(135deg, var(--sl-color-accent) 0%, var(--sl-color-accent-high) 100%);
+}
+
+:is(.hero-actions, .action-button) a[data-variant="secondary"] {
+  border: 2px solid var(--sl-color-accent);
+}
+
+/* Tables styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--sl-color-accent-low);
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--sl-color-gray-3) 50%, transparent);
+}
+
+/* Code block customization */
+pre {
+  border: 1px solid var(--sl-color-gray-4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Create custom terminal styling */
+pre.terminal {
+  background-color: var(--sl-color-black);
+  border-radius: 8px;
+  border: 1px solid var(--sl-color-gray-6);
+  padding: 1rem;
+  position: relative;
+}
+
+pre.terminal::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--sl-color-accent);
+  box-shadow: 20px 0 0 var(--sl-color-gray-4), 40px 0 0 var(--sl-color-accent-high);
+}
+
+pre.terminal code {
+  margin-top: 10px;
+  display: block;
+  color: var(--sl-color-white);
+}
+
+/* Hero section enhancements */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--sl-color-accent-low) 0%, transparent 100%);
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.hero .tagline {
+  font-size: var(--sl-text-lg);
+  margin-bottom: 2rem;
+}

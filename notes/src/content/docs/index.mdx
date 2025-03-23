@@ -1,36 +1,83 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Red Team Notes
+description: A comprehensive knowledge base for red team operations and security testing
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Your centralized resource for offensive security techniques, tools, and methodologies
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/cyber-shield.svg
+    alt: Red Team Security Shield
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /guides/ethics/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+      variant: primary
+    - text: Browse Techniques
+      link: /techniques/initial-access/
+      icon: open-book
+      variant: secondary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Next steps
+## Welcome to Red Team Notes
+
+A comprehensive collection of offensive security techniques, tools, methodologies, and procedures used in professional red team operations and penetration testing.
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Attack Techniques" icon="rocket">
+    Modern approaches to network penetration, system compromise, and persistent access.
+  </Card>
+  <Card title="OPSEC & Evasion" icon="setting">
+    Methods to avoid detection and maintain stealth during operations.
+  </Card>
+  <Card title="Tool Documentation" icon="pencil">
+    Detailed guides for security tools and custom exploit development.
+  </Card>
+  <Card title="Reporting Templates" icon="document">
+    Professional templates for documenting findings and creating reports.
+  </Card>
 </CardGrid>
+
+## Featured Resources
+
+<Tabs>
+  <TabItem label="Initial Access">
+    ```bash
+    # Example of a common web vulnerability scan
+    nmap -sV --script=vuln example.com
+    ```
+    
+    Techniques for obtaining initial foothold in target environments, including phishing, web exploitation, and external vulnerability scanning.
+    
+    [Learn more about Initial Access →](/techniques/initial-access/)
+  </TabItem>
+  <TabItem label="Privilege Escalation">
+    ```bash
+    # Quick Linux privilege escalation check
+    find / -perm -u=s -type f 2>/dev/null
+    ```
+    
+    Methods to elevate privileges once access is obtained, targeting misconfigured permissions, vulnerable services, and credential harvesting.
+    
+    [Learn more about Privilege Escalation →](/techniques/privilege-escalation/)
+  </TabItem>
+  <TabItem label="Evasion Techniques">
+    ```python
+    # Example obfuscation technique
+    encoded_payload = base64.b64encode(payload.encode()).decode()
+    ```
+    
+    Advanced tactics to avoid detection by security tools and monitoring systems during red team operations.
+    
+    [Learn more about Evasion →](/infrastructure/opsec/)
+  </TabItem>
+</Tabs>
+
+## Start Using These Notes
+
+Designed for security professionals conducting authorized security testing. All techniques should be used ethically and legally within proper engagement boundaries.
+
+<div class="action-button">
+  <a href="/guides/ethics/" data-variant="primary">Read Ethics Guidelines</a>
+</div>
