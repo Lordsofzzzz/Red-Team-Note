@@ -2,18 +2,17 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
       title: 'Red Team Notes',
       description: 'A comprehensive knowledge base for offensive security professionals',
-      logo: {
-        src: './src/assets/red-team-logo.svg',
-        alt: 'Red Team Notes Logo',
-      },
+   
       customCss: [
-        './src/styles/custom.css',
+        './src/styles/global.css',
       ],
       social: {
         github: 'https://github.com/your-username/red-team-notes',
@@ -23,26 +22,15 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Getting Started',
-          items: [
-            { label: 'Introduction', link: '/' },
-            { label: 'Ethics & Legal', link: '/guides/ethics/' },
-          ],
+          autogenerate: { directory: 'Getting Started' },
         },
         {
           label: 'Attack Techniques',
-          items: [
-            { label: 'Initial Access', link: '/techniques/initial-access/' },
-            { label: 'Privilege Escalation', link: '/techniques/privilege-escalation/' },
-            { label: 'Lateral Movement', link: '/techniques/lateral-movement/' },
-            { label: 'Persistence', link: '/techniques/persistence/' },
-          ],
+          autogenerate: { directory: 'techniques' },
         },
         {
           label: 'Infrastructure',
-          items: [
-            { label: 'C2 Frameworks', link: '/tools/c2-frameworks/' },
-            { label: 'Operational Security', link: '/infrastructure/opsec/' },
-          ],
+          autogenerate: { directory: 'infrastructure' },
         },
         {
           label: 'Tools',
@@ -50,12 +38,13 @@ export default defineConfig({
         },
         {
           label: 'Resources',
-          items: [
-            { label: 'Report Templates', link: '/resources/report-templates/' },
-            { label: 'MITRE ATT&CK', link: '/resources/mitre-attack/' },
-          ],
+          autogenerate: { directory: 'resources' },
         },
       ],
     }),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+.site-title {
+  background: linear-gradient(to right, red, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 2rem; 
+}
+
+.header {
+  backdrop-filter: blur(15px); /* Keep the blur effect */
+  background: transparent; /* Make the background fully transparent */
+}
+
+
+
