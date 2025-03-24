@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,11 +9,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [starlightThemeRapide()],
       title: 'Red Team Notes',
       description: 'A comprehensive knowledge base for offensive security professionals',
    
-      customCss: [
-        './src/styles/global.css',
+      
       ],
       social: {
         github: 'https://github.com/your-username/red-team-notes',
