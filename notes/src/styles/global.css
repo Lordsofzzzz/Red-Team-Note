@@ -20,8 +20,8 @@
   --sl-color-gray-3: #a0a0a0;      /* Medium gray */
   --sl-color-gray-4: #707070;      /* Dark gray */
   --sl-color-gray-5: #404040;      /* Darker gray */
-  --sl-color-gray-6: #282828;      /* Very dark gray */
-  --sl-color-black: #171717;       /* Nearly black */
+  --sl-color-gray-6: #212121;      /* Very dark gray */
+  --sl-color-black: #202020;       /* Nearly black */
 }
 
 /* Light mode colors - Matching Red Team Light Theme */
@@ -40,7 +40,7 @@
   --sl-color-gray-5: #d0cfcf;      /* Creamy light gray */
   --sl-color-gray-6: #e8e6e6;      /* Softer creamy light gray */
   --sl-color-gray-7: #f9f4f4;      /* Creamy light background */
-  --sl-color-black: #f5f0f0;       /* Creamy off-white for backgrounds */
+  --sl-color-black: #f6f0f0;       /* Creamy off-white for backgrounds */
 }
 
 /* Fixed site title with proper shine and glow effects */
@@ -186,10 +186,8 @@ blockquote {
 /* Add subtle background patterns to content sections */
 main {
   position: relative;
-  overflow: hidden; /* Prevent pattern overflow */
 }
 
-/* Primary background pattern */
 main::before {
   content: "";
   position: absolute;
@@ -198,98 +196,18 @@ main::before {
   width: 100%;
   height: 100%;
   background-image: 
-    /* Grid pattern */
-    linear-gradient(rgba(255, 51, 51, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 51, 51, 0.05) 1px, transparent 1px),
-    /* Dot pattern overlay */
     radial-gradient(circle at 25px 25px, rgba(255, 51, 51, 0.15) 2px, transparent 0),
     radial-gradient(circle at 75px 75px, rgba(255, 51, 51, 0.1) 2px, transparent 0);
-  background-size: 
-    20px 20px, /* Vertical lines */
-    20px 20px, /* Horizontal lines */
-    100px 100px, /* Small dots */
-    100px 100px; /* Large dots */
+  background-size: 100px 100px;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
-/* Secondary animated glow effect */
-main::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 51, 51, 0.03) 0%,
-    transparent 60%
-  );
-  z-index: -2;
-  opacity: 0.6;
-  pointer-events: none;
-  animation: pulse-glow 15s ease-in-out infinite alternate;
-}
-
-/* Glow pulsing animation */
-@keyframes pulse-glow {
-  0% {
-    transform: translate(-10%, -10%) rotate(0deg);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    transform: translate(10%, 10%) rotate(5deg);
-    opacity: 0.5;
-  }
-}
-
-/* Light mode versions */
 :root[data-theme='light'] main::before {
   background-image: 
-    linear-gradient(rgba(176, 90, 90, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(176, 90, 90, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 25px 25px, rgba(176, 90, 90, 0.08) 2px, transparent 0),
-    radial-gradient(circle at 75px 75px, rgba(176, 90, 90, 0.05) 2px, transparent 0);
-}
-
-:root[data-theme='light'] main::after {
-  background: radial-gradient(
-    circle at center,
-    rgba(176, 90, 90, 0.04) 0%,
-    transparent 60%
-  );
-  opacity: 0.5;
-}
-
-/* Code block enhancement with cyberpunk background */
-pre {
-  position: relative;
-  background-color: rgba(10, 10, 10, 0.95) !important;
-  border: 1px solid var(--sl-color-accent) !important;
-  box-shadow: 0 0 15px rgba(255, 51, 51, 0.15) !important;
-  overflow: hidden;
-}
-
-/* Add subtle tech lines to code blocks */
-pre::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(90deg, transparent 95%, rgba(255, 51, 51, 0.1) 95%),
-    linear-gradient(transparent 95%, rgba(255, 51, 51, 0.1) 95%);
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.2;
+    radial-gradient(circle at 25px 25px, rgba(176, 90, 90, 0.1) 2px, transparent 0),
+    radial-gradient(circle at 75px 75px, rgba(176, 90, 90, 0.07) 2px, transparent 0);
 }
 
 /* Better focus indicators for keyboard navigation */
