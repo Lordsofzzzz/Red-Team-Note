@@ -121,15 +121,19 @@
 }
 
 .header {
-  backdrop-filter: blur(10px); /* Keep the blur effect */
-  background: transparent; /* Make the background fully transparent */
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
 }
 
 /* Add terminal-like elements for Red Team theme */
 pre, code {
   border-radius: 4px;
-  border: 1px solid var(--sl-color-accent);
-  border-bottom: 1px solid var(--sl-color-red-4); /* Add a subtle line below the header */
+  border: 1px solid var(--sl-color-accent) !important;
+  /* Remove reference to non-existent variable */
+  /* border-bottom: 1px solid var(--sl-color-red-4); */
 }
 
 /* Style buttons to match Red Team theme */
@@ -137,9 +141,13 @@ button.sl-button {
   background-color: var(--sl-color-accent) !important;
   color: var(--sl-color-white) !important;
   border-radius: 4px !important;
+  transition: filter 0.2s ease, transform 0.2s ease !important;
 }
 
-
+button.sl-button:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px) !important;
+}
 
 a:hover:not(.sl-button):not(.site-title) {
   color: var(--sl-color-accent-high) !important;
@@ -151,8 +159,25 @@ a:hover:not(.sl-button):not(.site-title) {
 blockquote {
   border-left: 4px solid var(--sl-color-accent) !important;
   background-color: rgba(204, 48, 48, 0.1) !important;
-  padding: 0.5rem 1rem !important;
-  margin: 1rem 0 !important;
+  padding: 0.75rem 1rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* Add cyberpunk-inspired styles for sidebar nav */
+.sidebar-nav a {
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a[aria-current="page"] {
+  color: var(--sl-color-accent-high) !important;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.4) !important;
+}
+
+/* Fix for specific components that might be overridden by Starlight */
+:is(h1, h2, h3, h4, h5, h6) a {
+  text-decoration: none !important;
 }
 
 
