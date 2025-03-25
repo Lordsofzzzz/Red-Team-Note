@@ -1,15 +1,163 @@
 @import "tailwindcss";
 
+/* Dark mode colors - Red Team Theme */
+:root {
+  /* Primary accent colors */
+  --sl-color-accent-low: #1c1414;  /* Very dark red-black */
+  --sl-color-accent: #cc3030;      /* Strong red - primary accent */
+  --sl-color-accent-high: #ff6b6b; /* Brighter red for highlights */
+  
+  /* Text and background colors */
+  --sl-color-white: #f0f0f0;       /* Off-white for main text */
+  --sl-color-gray-1: #e0e0e0;      /* Lightest gray */
+  --sl-color-gray-2: #c0c0c0;      /* Light gray */
+  --sl-color-gray-3: #a0a0a0;      /* Medium gray */
+  --sl-color-gray-4: #707070;      /* Dark gray */
+  --sl-color-gray-5: #404040;      /* Darker gray */
+  --sl-color-gray-6: #282828;      /* Very dark gray */
+  --sl-color-black: #171717;       /* Nearly black */
+}
+
+/* Light mode colors - Matching Red Team Light Theme */
+:root[data-theme='light'] {
+  /* Primary accent colors */
+  --sl-color-accent-low: #fbe8e8;  /* Creamy light red tint background */
+  --sl-color-accent: #d47a7a;      /* Muted warm red for accents */
+  --sl-color-accent-high: #b05a5a; /* Softer deep red for highlights */
+  
+  /* Text and background colors */
+  --sl-color-white: #2a2a2a;       /* Darker gray for main text */
+  --sl-color-gray-1: #3a3a3a;      /* Slightly darker gray for contrast */
+  --sl-color-gray-2: #5a5a5a;      /* Medium-dark gray */
+  --sl-color-gray-3: #7a7a7a;      /* Medium gray */
+  --sl-color-gray-4: #9a9a9a;      /* Softer gray */
+  --sl-color-gray-5: #d0cfcf;      /* Creamy light gray */
+  --sl-color-gray-6: #e8e6e6;      /* Softer creamy light gray */
+  --sl-color-gray-7: #f9f4f4;      /* Creamy light background */
+  --sl-color-black: #f5f0f0;       /* Creamy off-white for backgrounds */
+}
+
+/* Fixed site title with proper shine and glow effects */
 .site-title {
-  background: linear-gradient(to right, red, orange);
+  background: linear-gradient(90deg, #cc3030, #ff8c42, #ff6b6b, #cc3030); /* Extended gradient */
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text; /* Modern syntax for Firefox */
+  color: transparent; /* Fallback and for Firefox */
   margin-left: 2rem; 
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0;
+  font-size: 1.3em; /* Slightly larger text */
+  letter-spacing: 0.8px; /* Improved spacing */
+  animation: gradient 8s ease infinite;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Gradient animation for the title text */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fix hover effect for text */
+.site-title:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 140, 66, 0.4));
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Add a subtle shine effect with pseudo-element */
+.site-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(35deg);
+  animation: shine 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  25%, 100% {
+    left: 150%;
+  }
+}
+
+/* Add glow effect with a separate element to avoid conflicts with text */
+.site-title::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px) brightness(1.2);
+  opacity: 0.7;
+  color: #ff6b6b;
+  pointer-events: none;
 }
 
 .header {
-  backdrop-filter: blur(15px); /* Keep the blur effect */
+  backdrop-filter: blur(10px); /* Keep the blur effect */
   background: transparent; /* Make the background fully transparent */
+}
+
+/* Add terminal-like elements for Red Team theme */
+pre, code {
+  border-radius: 4px;
+  border: 1px solid var(--sl-color-accent);
+  border-bottom: 1px solid var(--sl-color-red-4); /* Add a subtle line below the header */
+}
+
+/* Style buttons to match Red Team theme */
+button.sl-button {
+  background-color: var(--sl-color-accent) !important;
+  color: var(--sl-color-white) !important;
+  border-radius: 4px !important;
+}
+
+/* Style links to match Red Team theme - without hover underline */
+a:not(.sl-button):not(.site-title) {
+  color: var(--sl-color-accent) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+a:hover:not(.sl-button):not(.site-title) {
+  color: var(--sl-color-accent-high) !important;
+  text-decoration: none !important; /* Remove underline on hover */
+  opacity: 0.9; /* Subtle hover effect instead of underline */
+}
+
+/* Style blockquotes for security notes/warnings */
+blockquote {
+  border-left: 4px solid var(--sl-color-accent) !important;
+  background-color: rgba(204, 48, 48, 0.1) !important;
+  padding: 0.5rem 1rem !important;
+  margin: 1rem 0 !important;
 }
 
 

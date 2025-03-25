@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightThemeRapide from 'starlight-theme-rapide';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -9,10 +8,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [
     starlight({
-      plugins: [starlightThemeRapide()],
       title: 'Red Team Notes',
       description: 'A comprehensive knowledge base for offensive security professionals',
-   
+      customCss: [
+        // Path to your Tailwind base styles:
+        './src/styles/global.css',
       
       ],
       social: {
@@ -21,6 +21,10 @@ export default defineConfig({
         discord: 'https://discord.com/your-discord',
       },
       sidebar: [
+        {
+          label: 'guides',
+          autogenerate: { directory: 'guides' },
+        },
         {
           label: 'Getting Started',
           autogenerate: { directory: 'Getting Started' },
@@ -42,6 +46,10 @@ export default defineConfig({
           autogenerate: { directory: 'resources' },
         },
       ],
+      components: {
+        // Override the default ThemeSelect component
+        ThemeSelect: './src/components/ThemeSelect.astro',
+      },
     }),
   ],
 
