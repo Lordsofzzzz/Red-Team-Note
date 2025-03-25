@@ -1,0 +1,13 @@
+h1, h2, h3 {
+  letter-spacing: 0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}

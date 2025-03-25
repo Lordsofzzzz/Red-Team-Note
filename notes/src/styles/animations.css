@@ -1,0 +1,67 @@
+/* Gradient animation for the title text */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  25%, 100% {
+    left: 150%;
+  }
+}
+
+/* Fixed site title with proper shine and glow effects */
+.site-title {
+  background: linear-gradient(90deg, #cc3030, #ff8c42, #ff6b6b, #cc3030); /* Extended gradient */
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Modern syntax for Firefox */
+  color: transparent; /* Fallback and for Firefox */
+  margin-left: 2rem; 
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0;
+  font-size: 1.3em; /* Slightly larger text */
+  letter-spacing: 0.8px; /* Improved spacing */
+  animation: gradient 8s ease infinite;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Fix hover effect for text */
+.site-title:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 140, 66, 0.4));
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Add a subtle shine effect with pseudo-element */
+.site-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(35deg);
+  animation: shine 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}

@@ -1,0 +1,15 @@
+.sidebar-nav a {
+  transition: text-shadow 0.2s ease;
+  color: var(--sl-color-white);
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-nav a[aria-current="page"] {
+  color: var(--sl-color-accent-high);
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+  font-weight: bold;
+}
