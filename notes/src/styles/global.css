@@ -139,12 +139,7 @@ button.sl-button {
   border-radius: 4px !important;
 }
 
-/* Style links to match Red Team theme - without hover underline */
-a:not(.sl-button):not(.site-title) {
-  color: var(--sl-color-accent) !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
+
 
 a:hover:not(.sl-button):not(.site-title) {
   color: var(--sl-color-accent-high) !important;
