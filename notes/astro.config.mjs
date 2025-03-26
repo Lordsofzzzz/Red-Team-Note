@@ -10,16 +10,49 @@ export default defineConfig({
     starlight({
       title: 'Red Team Notes',
       description: 'A comprehensive knowledge base for offensive security professionals',
-      customCss: [
-        // Path to your Tailwind base styles:
-        './src/styles/global.css',
-      
-      ],
+      customCss: ['./src/styles/global.css'],
       social: {
         github: 'https://github.com/your-username/red-team-notes',
         twitter: 'https://twitter.com/your-twitter',
         discord: 'https://discord.com/your-discord',
       },
+      favicon: '/favicon-32x32.png', // Set the default favicon
+      head: [
+        // Add fallback favicons for different devices and browsers
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            href: '/favicon-32x32.png',
+            sizes: '32x32',
+            type: 'image/png',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            href: '/favicon-16x16.png',
+            sizes: '16x16',
+            type: 'image/png',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'apple-touch-icon',
+            href: '/apple-touch-icon.png',
+            sizes: '180x180',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'manifest',
+            href: '/site.webmanifest',
+          },
+        },
+      ],
       sidebar: [
         {
           label: 'guides',
@@ -47,7 +80,6 @@ export default defineConfig({
         },
       ],
       components: {
-        // Override the default ThemeSelect component
         ThemeSelect: './src/components/ThemeSelect.astro',
       },
     }),
