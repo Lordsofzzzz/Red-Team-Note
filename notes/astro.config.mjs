@@ -12,9 +12,7 @@ export default defineConfig({
       description: 'A comprehensive knowledge base for offensive security professionals',
       customCss: ['./src/styles/global.css'],
       social: {
-        github: 'https://github.com/your-username/red-team-notes',
-        twitter: 'https://twitter.com/your-twitter',
-        discord: 'https://discord.com/your-discord',
+        github: 'https://github.com/Lordsofzzzz/Red-Team-Note',
       },
       favicon: '/favicon-32x32.png', // Set the default favicon
       head: [
