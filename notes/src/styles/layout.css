@@ -24,8 +24,7 @@ main::before {
 }
 
 :root[data-theme='light'] main::before {
-  background-image: radial-gradient(circle at 25px 25px, rgba(255, 51, 51, 0.35) 2px, transparent 0),
-    radial-gradient(circle at 75px 75px, rgba(255, 51, 51, 0.25) 2px, transparent 0);
-  opacity: 0.85; /* Significantly increased opacity for better visibility */
-  background-size: 100px 100px; /* Ensure pattern size is consistent */
+  background-image: radial-gradient(circle at 25px 25px, rgba(255, 102, 102, 0.2) 2px, transparent 0),
+    radial-gradient(circle at 75px 75px, rgba(255, 102, 102, 0.15) 2px, transparent 0);
+  opacity: 0.6; /* Increase opacity for better visibility */
 }
