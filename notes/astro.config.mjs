@@ -53,8 +53,8 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: 'guides',
-          autogenerate: { directory: 'guides' },
+          label: 'Reconnaissance',
+          autogenerate: { directory: 'Reconnaissance' },
         },
         {
           label: 'Getting Started',
