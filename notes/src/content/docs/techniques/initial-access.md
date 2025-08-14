@@ -41,8 +41,7 @@ SQL injection remains a critical vulnerability in many web applications:
 
 ### File Upload Vulnerabilities
 
-Unrestricted file uploads can lead to remote code execution:
-
+Unrestricted file uploads can lead to remote code executi
 ```php
 <?php
   // Basic PHP webshell
