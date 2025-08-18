@@ -1,0 +1,230 @@
+# Red Teaming Cyber Security Notes
+
+# Red Team Fundamentals
+
+Red teaming is an advanced form of penetration testing that simulates real-world attacks to test an organization's security posture, detection capabilities, and response procedures.
+
+## Core Concepts
+
+- **Definition:** Red teaming involves authorized, adversarial-based assessments that emulate threat actors targeting an organization.
+- **Purpose:** To identify vulnerabilities, test security controls, and improve incident response capabilities before actual attackers do.
+- **Difference from Pen Testing:** Red teaming is broader in scope, longer in duration, and focuses on specific objectives rather than finding all vulnerabilities.
+
+## Methodology and Frameworks
+
+### MITRE ATT&CK Framework
+
+A globally-accessible knowledge base of adversary tactics and techniques based on real-world observations.
+
+- Tactics: Initial Access, Execution, Persistence, Privilege Escalation, Defense Evasion, Credential Access, Discovery, Lateral Movement, Collection, Command and Control, Exfiltration, Impact
+- Used for planning red team exercises and mapping adversary behaviors
+
+### Kill Chain Methodology
+
+A phased approach to attacks that helps organize red team activities:
+
+1. Reconnaissance: Gathering information about the target
+2. Weaponization: Creating malware/exploits tailored to target
+3. Delivery: Transmitting the weapon to the target
+4. Exploitation: Triggering the exploit
+5. Installation: Installing malware or backdoor
+6. Command & Control: Establishing persistent access
+7. Actions on Objectives: Achieving the ultimate goal
+
+## Tools of the Trade
+
+| **Category** | **Tools** | **Purpose** |
+| --- | --- | --- |
+| Reconnaissance | OSINT Framework, Shodan, Maltego, theHarvester | Information gathering |
+| Scanning | Nmap, Nessus, OpenVAS | Network/vulnerability scanning |
+| Exploitation | Metasploit, Cobalt Strike, Empire | Exploit execution and payload delivery |
+| Post-Exploitation | Mimikatz, PowerSploit, BloodHound | Credential theft, privilege escalation |
+| C2 Frameworks | Covenant, Sliver, Mythic | Command and control infrastructure |
+| Social Engineering | GoPhish, SET, BeEF | Phishing and user manipulation |
+
+## Attack Techniques
+
+### Initial Access
+
+- Phishing: Crafting convincing emails with malicious attachments or links
+- External Remote Services: Exploiting VPNs, RDP, or other remote access solutions
+- Supply Chain Compromise: Targeting trusted third-party software providers
+- Valid Accounts: Using stolen credentials from data breaches
+
+### Persistence
+
+- Registry modifications
+- Scheduled tasks/cron jobs
+- Startup folder items
+- Account manipulation
+- Backdoor deployment
+
+### Privilege Escalation
+
+- Exploiting misconfigurations
+- Abusing user rights
+- Leveraging unpatched vulnerabilities
+- Access token manipulation
+- Pass-the-hash and pass-the-ticket attacks
+
+### Defense Evasion
+
+- Disabling security tools
+- File-less malware techniques
+- Obfuscation and encoding
+- Living off the land techniques (using native OS tools)
+- Timestomping and log manipulation
+
+## Red Team Operations Planning
+
+### Pre-Engagement
+
+- Define clear objectives and scope
+- Establish Rules of Engagement (ROE)
+- Create communication plans
+- Identify "crown jewels" and critical assets
+- Set up safe infrastructure and command centers
+
+### Execution
+
+- Maintain detailed activity logs
+- Document findings and evidence
+- Ensure proper authorization for each action
+- Avoid destructive testing unless explicitly approved
+- Regular check-ins with stakeholders
+
+### Post-Engagement
+
+- Comprehensive reporting
+- Evidence preservation
+- Debriefing sessions
+- Recommendations for remediation
+- Metrics and KPIs evaluation
+
+## Social Engineering Tactics
+
+| **Tactic** | **Description** | **Defense** |
+| --- | --- | --- |
+| Pretexting | Creating a fabricated scenario to obtain information | Verification procedures |
+| Baiting | Offering something enticing to entrap the victim | Security awareness |
+| Quid Pro Quo | Requesting information in exchange for a service | Strict information sharing policies |
+| Tailgating | Following someone into a restricted area | Access control, security guards |
+| Vishing | Voice phishing via phone calls | Call-back procedures |
+
+## Physical Security Testing
+
+- Lock picking and bypass techniques
+- RFID cloning and replay attacks
+- Camera and alarm system evasion
+- Dumpster diving for sensitive information
+- Device planting (rogue access points, keyloggers)
+
+## Legal and Ethical Considerations
+
+- **Authorization:** Always obtain proper written authorization before beginning any red team operation
+- **Scope adherence:** Never exceed the defined scope or Rules of Engagement
+- **Data handling:** Treat discovered data with appropriate confidentiality
+- **Documentation:** Maintain detailed records of all activities and findings
+- **Regulations:** Be aware of relevant laws (CFAA, GDPR, etc.) in your jurisdiction
+
+## Reporting and Documentation
+
+### Key Components of a Red Team Report
+
+- Executive Summary: High-level overview for leadership
+- Methodology: Approach and frameworks used
+- Attack Path Narrative: Story of how objectives were achieved
+- Technical Findings: Detailed explanations of vulnerabilities
+- Evidence and Screenshots: Documentation of successful compromises
+- Realistic Impact Assessment: Business context for findings
+- Strategic Recommendations: Long-term security improvements
+- Tactical Recommendations: Specific vulnerability remediation
+
+<aside>
+Remember: The goal of red teaming is not just to break in, but to improve the organization's security posture and resilience against real threats. Always focus on providing actionable insights and value.
+
+</aside>
+
+## OPSEC Considerations
+
+- Infrastructure separation (use dedicated systems)
+- Communication encryption
+- Tool selection to avoid detection
+- Proper attribution avoidance
+- Log and trace cleanup
+
+## Advanced Techniques
+
+### Active Directory Attacks
+
+- Kerberoasting
+- AS-REP Roasting
+- DCSync attacks
+- Domain trust exploitation
+- Golden and Silver ticket attacks
+
+### Cloud Environment Attacks
+
+- Identity and Access Management (IAM) exploitation
+- Storage bucket enumeration and access
+- Serverless function manipulation
+- API key and token theft
+- Container escape techniques
+
+```python
+# Example of a simple reconnaissance script
+import requests
+import sys
+
+def check_subdomains(domain, wordlist):
+    found_subdomains = []
+    
+    with open(wordlist, 'r') as file:
+        for line in file:
+            subdomain = line.strip() + '.' + domain
+            try:
+                response = requests.get(f"https://{subdomain}", timeout=2)
+                if response.status_code == 200:
+                    print(f"[+] Found subdomain: {subdomain}")
+                    found_subdomains.append(subdomain)
+            except:
+                pass
+    
+    return found_subdomains
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python subdomain_finder.py domain.com wordlist.txt")
+        sys.exit(1)
+    
+    domain = sys.argv[1]
+    wordlist = sys.argv[2]
+    
+    print(f"[*] Starting subdomain enumeration for {domain}")
+    found = check_subdomains(domain, wordlist)
+    print(f"[*] Enumeration complete. Found {len(found)} subdomains")
+
+```
+
+## Resources for Further Learning
+
+### Books
+
+- Red Team Field Manual (RTFM)
+- The Hacker Playbook (1-3)
+- Operator Handbook
+- Practical Social Engineering
+
+### Online Resources
+
+- MITRE ATT&CK Matrix
+- Red Team Village
+- HackTheBox and TryHackMe platforms
+- SANS SEC564: Red Team Operations and Threat Emulation
+
+### Communities
+
+- Red Team Security Community
+- DEFCON Groups
+- Local BSides conferences
+- Online forums like Reddit's r/redteamsec
